@@ -1,0 +1,25 @@
+<div class="flex-box"><a href="#" style="color:steelblue">Facebook</a><br />
+    <p><a href="#" style="color:black">Facebook helps you connect and share with the people in your life.</a></p></div>  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   <%#=render "users/shared/navbar"%>
+<div class="box">
+  <div class="field">
+    <br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email or Phone" %>
+  </div>
+  <div class="field">
+    <br />
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+  </div>
+     <% if devise_mapping.rememberable? %>
+  <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+    <% end %>
+  <div class="btn btn-primary">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+<%= render "users/shared/links" %>
+</div>
