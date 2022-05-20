@@ -1,23 +1,39 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
+
+   
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
+   # GET /resource/sign_up
+
+  
+
    def new
      @user = User.new
    end
 
+   def show
+    @user = User.find(params[:first_name])
+   end
+
+
+
   # POST /resource
   def create
-     @user = User.new(user_params)
-     @user.save
-    # if @user.save
-    #   redirect_to @user
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    @user = User.new(user_params)
+      
+     
+     # binding pry
+      if @user.save
+
+         UserMailer.with(user: @user).welcome_email.deliver_later
+        redirect_to new_user_session_path
+      else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # GET /resource/edit
@@ -68,6 +84,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     private
     def user_params
-      params.require(:user).permit(:email,:password,:encrypted_password, :first_name,:last_name,:date_of_birth)
+      params.require(:user).permit(:email,:password,:encrypted_password, :first_name,:last_name,:date_of_birth,:city,:gender)
     end
    end

@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -31,10 +31,18 @@ gem "devise"
 
 gem "bootstrap" 
 
+gem 'pg'
+
 gem 'pry', '~> 0.13.1'
 
-# gem "jquery-rails "
+gem "jquery-rails"
 
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-twitter'
+# To manage environment variables locally
+gem 'dotenv'
 
 
 # Use Redis adapter to run Action Cable in production

@@ -1,0 +1,27 @@
+
+
+<div class="container2">
+   
+   <% @users.each do |user| %>
+  <li>
+   <%= user.first_name %>
+   <%= user.email %>
+
+    <div class="btn-group icons">
+      
+      <%= button_to 'addfriend',addfriend_friend_path(id:user.id), method: :post ,class:"btn btn-sm btn-outline-primary"%>
+      
+      <%= button_to 'remove', friend_path(id:user.id), method: :delete ,class:"btn btn-sm btn-outline-primary"%>
+    </div>  
+  </li>
+ 
+   <%end%>
+  
+</div> 
+ 
+ <%= render "friendship/index", friendship: @friends %>
+
+
+
+  
+ 

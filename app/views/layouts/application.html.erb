@@ -1,16 +1,58 @@
-<!DOCTYPE html>
-<html>
+
+
+ <!DOCTYPE html>
+ <html>
   <head>
     <title>Facebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%#= favicon_link_tag asset_path('logo_size_icon_invert.png') %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  
+    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  
+    <%#= stylesheet_link_tag "http://www.example.com/style.css" %>
+    <%#= stylesheet_link_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>
+    
+  
 
-   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  
-      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>  
   </head>
 
   <body>
+    <%= render partial: "layouts/navbar" %>
+    <%= render partial: "layouts/footer" %>
+
+  <!--  <#% flash.each do |type, msg| %>
+    <div>
+      <#%= msg %>
+    </div>
+  <%# end %> -->
+
     <%= yield %>
   </body>
-</html>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

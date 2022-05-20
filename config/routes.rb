@@ -1,15 +1,34 @@
 Rails.application.routes.draw do
-  get 'comment/new'
-  get 'post/new'
+  
+  # get 'comment/new'
+  # get 'post/new'
  
   devise_for :users, controllers: {
            :sessions => "users/sessions",
-           :registrations => "users/registrations" }
- 
+           :registrations => "users/registrations",
+           :omniauth_callbacks => "users/omniauth_callbacks"  }
 
-        resources :profiles
+      resources :profiles
 
-        resources :posts
+      resources :posts  do
+
+      resources :comments
+      end
+        
+      resources :friends do
+
+        member do
+          post :addfriend
+        end
+       end   
+
+
+       get 'friendship/index'
+       get 'friends/index'
+
+      post "/nikita", to: "posts#nikita"
+
+      # post "/addfriend", to: "friends#index"
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,3 +36,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
+
+

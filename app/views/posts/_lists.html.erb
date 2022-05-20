@@ -1,0 +1,8 @@
+<%#= image_tag url_for(Post.last.image) %>
+
+  
+
+<% @posts.each do |post| %>
+  <br />
+  <%= render 'post', post: post %>
+<% end %>  

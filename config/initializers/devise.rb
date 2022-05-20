@@ -16,6 +16,26 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '42ffc510442942cb41aba94c3f8980d195f4610e8255cf8b1a5f7807eb66f2da0a187071be8058cbb2d1ce6d02d3d7e6c22e690ab336e8065c7ff1fa36dd4fdc'
 
+  # config.reconfirmable = true
+
+  ################  use omniauth##############
+
+   [:facebook, :linkedin, :google_oauth2].each do |provider_name|
+    if provider_name == :developer
+      config.omniauth :developer
+    else
+      # api_key = ENV["#{provider_name.upcase}_API_KEY"]
+      # api_secret = ENV["#{provider_name.upcase}_API_SECRET"]
+
+       api_key = "305626711757755"
+       api_secret = "c0cfb411671eff61bd10dd21af320f04"
+      config.omniauth provider_name, api_key, api_secret
+    end
+  end
+
+
+  config.omniauth_path_prefix = "/users/auth"
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

@@ -1,0 +1,48 @@
+<div class="card shadow-sm">
+  <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Post" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"> -->
+    <%#binding.pry%>
+    <%= image_tag url_for(post.image) if post.image.attached? %>
+    <%#= image_tag url_for(Post.last.image) %>
+</text></svg>
+
+  <div class="card-body">
+    <%#= post.image %>
+    <p class="card-text"><%= post.description %></p><br/>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        
+        
+         <%#= post.comments %>
+      
+
+
+        <%= link_to "Edit", edit_post_path(id:post.id),class: "btn btn-sm btn-outline-primary" %><br/>
+           
+        <%#= link_to "Edit", edit_post_path(post),:remote =>true, :class =>'edit_post' ,class:"btn btn-sm btn-outline-primary"%>
+
+    
+        <%= button_to 'Delete', post_path(post), method: :delete ,class:"btn btn-sm btn-outline-primary"%><br>
+
+
+        <%#= link_to "Destroy", post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-secondary" %>
+      
+      </div>
+     
+    </div>
+  </div>
+         
+
+        <%= render "comments/form", post: post %><br/>
+
+        <% post.comments.each do |comment| %>
+          <li>
+            
+              <%= comment.description %>
+            
+          </li>
+        <% end %>
+
+</div>
+
+

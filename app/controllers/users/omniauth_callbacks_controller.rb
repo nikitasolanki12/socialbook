@@ -27,4 +27,28 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+
+  skip_before_action :verify_authenticity_token
+  
+  def sign_in_with(provider_name)
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+    sign_in_and_redirect @user, :event => :authentication
+    set_flash_message(:notice, :success, :kind => provider_name) if is_navigational_format?
+  end
+
+  def facebook
+    sign_in_with "Facebook"
+  end
+
+  def linkedin
+    sign_in_with "LinkedIn"
+  end
+
+  # def twitter
+  #   sign_in_with "Twitter"
+  # end
+
+  # def google_oauth2
+  #   sign_in_with "Google"
+  # end
 end
